@@ -1,6 +1,11 @@
 package com.example.excalorias.repository;
 
+import com.example.excalorias.model.Ingrediente;
+
+import java.util.List;
+
 public interface Ingredientes {
 
-    public void readIngredientes(String filePath);
+    List<Ingrediente> readIngredientes();
+
 }

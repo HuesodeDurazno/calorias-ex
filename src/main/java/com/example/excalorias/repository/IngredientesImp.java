@@ -13,25 +13,19 @@ import java.util.List;
 
 
 @Repository
-@Getter
 public class IngredientesImp implements Ingredientes {
 
-    private static List<Ingrediente> ingredientes;
-
-    public IngredientesImp(){
-        readIngredientes("src/main/resources/food.json");
-    }
 
     @Override
-    public void readIngredientes(String filePath) {
+    public List<Ingrediente> readIngredientes() {
         ObjectMapper objectMapper = new ObjectMapper();
         List<Ingrediente> ingredientes = null;
         try {
-            ingredientes = objectMapper.readValue(new File(filePath), new TypeReference<List<Ingrediente>>(){});
+            ingredientes = objectMapper.readValue(new File("classpath:food.json"), new TypeReference<List<Ingrediente>>(){});
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.ingredientes = ingredientes;
+        return ingredientes;
     }
 
 }
